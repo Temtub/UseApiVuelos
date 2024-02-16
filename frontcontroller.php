@@ -1,18 +1,20 @@
 <?php
 
-try {
-    require $_SERVER['DOCUMENT_ROOT'] . '\Reservas-Hotel\db\DB.php';
-    
-} catch (Exception $ex) {
-}
-
 //Classes 
-require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\models\Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\objects\Vuelo.php';
+
+
+//Includes for views
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\views\VuelosView.php';
+
+//Includes for services
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos/services\VuelosService.php';
+
+//Includes for controllers
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\controllers\VuelosController.php';
 
 
 
-//Includes for "usuarios"
-require_once $_SERVER['DOCUMENT_ROOT'] . '\Reservas-Hotel\controllers\UsuariosController.php';
 
 
 // Define la acción por defecto

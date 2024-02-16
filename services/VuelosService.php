@@ -1,29 +1,34 @@
 <?php
-    
-class VuelosService {
-    // Obtiene una instancia de PDO para conectarse a la base de datos
-    private $bd;
-    private $pdo;
 
-    public function __construct() {
-       // $this->pdo = new PDO('mysql:host=localhost;dbname=ejemplo10_tema6', 'root', '');
-        $this->bd = new DB();
-        $this->pdo = $this->bd->getPDO();
-    }
+    class VuelosService{
 
-    // Recupera la lista de tareas de la base de datos
-    public function getUsuarios() {
-        // Preparamos una consulta de PDO para recuperar todas las tareas de la tabla "usuarios" y lo reservamos en una nueva variable
-        $stmt = $this->pdo->prepare('SELECT * FROM usuarios');
-        
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
-        
-        //If theres an error in this part it throws an exception
-        if(!$stmt->execute()){
-            throw new Swoole\MySQL\Exception();
+        //GET
+        function requestVuelos() {
+            //Declare the url of the service
+            $serviceUrl = "http://localhost/restfulVuelos/Vuelos.php";
+            //Start the conexion
+            $conexion = curl_init();
+
+            //Set the options for the conexion, vamos a caputrar una url, el valor
+            curl_setopt($conexion, CURLOPT_URL, $serviceUrl);
+
+            //Type of petition
+            curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+
+            //The content of the respond
+            curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+
+            //Configure the receiving
+            curl_setopt($conexion, CURLOPT_RETURNTRANSFER, true);
+            
+            $res = curl_exec($conexion);
+
+            if ($res) {
+               // echo "<br>Salida request_curl<br>";
+                //print_r($res);
+                return $res;
+            }
+            curl_close($conexion);
         }
-        
-        //Return the usuarios
-        return $stmt->fetchAll();
+
     }
-}
