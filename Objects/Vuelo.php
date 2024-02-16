@@ -63,8 +63,13 @@ class Vuelo {
     /**
      * Constructor de la clase Vuelo
      */
-    public function __construct(){
-        
+    public function __construct($identificador, $aeropuertoorigen, $aeropuertodestino, $tipovuelo, $fechavuelo, $descuento) {
+        $this->identificador = $identificador;
+        $this->aeropuertoorigen = $aeropuertoorigen;
+        $this->aeropuertodestino = $aeropuertodestino;
+        $this->tipovuelo = $tipovuelo;
+        $this->fechavuelo = $fechavuelo;
+        $this->descuento = $descuento;
     }
 
     /**
