@@ -38,13 +38,6 @@ class VuelosController {
         $this->view->showSelectVuelos($allVuelos);
     }
     
-    public function insertarPasaje(){
-        
-        //Get all the values from the service
-        $allVuelos = json_decode($this->service->requestVuelos(), false );
-
-        $this->view->insertarPasaje($allVuelos);
-    }
     /**
      * Function to tranform an arrya of vuelos into an array of class vuelos
      * 

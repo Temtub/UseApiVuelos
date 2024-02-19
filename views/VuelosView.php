@@ -39,19 +39,15 @@ class VuelosView{
     }
 
     public function showSelectVuelos($allVuelos) {
-        echo '<select>';
-            foreach($allVuelos as $vuelo){
-                echo '<option value="'.$vuelo->identificador.'">'. $vuelo->identificador.'</option>';
-            }
-        echo '</select>';
-    }
-
-    public function insertarPasaje($allVuelos){
-        echo '<h1>Inserta un pasáje</h1>';
-        echo '<form> 
-            <label>Selecciona un pasajero</label>';
-            $this->showSelectVuelos($allVuelos);
-        echo '</form>';
+        
+        $html = '<select>';
+        $html .= '<option disabled selected value="">Seleccione un código</option>';
+        foreach($allVuelos as $vuelo){
+            $html .= '<option value="'.$vuelo->identificador.'">'. $vuelo->identificador .' - '. $vuelo->aeropuertoorigen. ' - '. $vuelo->aeropuertodestino.'</option>';
+        }
+        $html .= '</select>';
+        
+        return $html;
     }
 
     public function showMessage($errorMsg, $type="normal", $img=null) {

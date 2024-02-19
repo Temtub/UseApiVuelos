@@ -5,16 +5,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\objects\Vuelo.php';
 
 
 //Includes for views
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\views\VuelosPasajerosPasajeView.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\views\VuelosView.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\views\PasajerosView.php';
+
 
 //Includes for services
 require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos/services\VuelosService.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos/services\PasajeService.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos/services\PasajerosService.php';
 
 //Includes for controllers
 require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\controllers\VuelosController.php';
-
-
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '\usoApiVuelos\controllers\VuelosPasajerosPasajeController.php';
 
 
 // Define la acción por defecto

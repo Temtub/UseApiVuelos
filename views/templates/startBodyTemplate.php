@@ -41,7 +41,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" 
                                    href="<?php
-                                    echo $_SERVER['PHP_SELF'] . '?controller=Vuelos&action=insertarPasaje';
+                                    echo $_SERVER['PHP_SELF'] . '?controller=VuelosPasajerosPasaje&action=showInsertarPasajeForm';
                                    ?>" >Insertar pasaje</a>
                             </li>
                         </ul>
