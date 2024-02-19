@@ -5,7 +5,7 @@ class PasajerosView{
     public function createSelectPasajeros($allPasajeros) {
         
         $cont = 0;
-        $html = '<select>';
+        $html = '<select name="pasajero">';
         $html .= '<option disabled selected value="">Seleccione el pasajero.</option>';
         foreach($allPasajeros as $pasajero){
             $html .= '<option value="'.$pasajero->pasajerocod.'">' .$cont . ' - ' .$pasajero->nombre.'</option>';

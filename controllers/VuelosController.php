@@ -17,7 +17,7 @@ class VuelosController {
     public function viewAllVuelos() {
         
         //Get all the values from the service
-        $allVuelos = json_decode($this->service->requestVuelos(), false );
+        $allVuelos = $this->service->requestVuelos();
         
         //echo "<br>Salida request_curl<br>";
         //print_r($allVuelos);
@@ -29,7 +29,7 @@ class VuelosController {
     public function viewListaVuelos() {
         
         //Get all the values from the service
-        $allVuelos = json_decode($this->service->requestVuelos(), false );
+        $allVuelos = json_decode($this->service->requestVuelos() );
         
         //echo "<br>Salida request_curl<br>";
         //print_r($allVuelos);

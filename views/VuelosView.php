@@ -40,7 +40,7 @@ class VuelosView{
 
     public function showSelectVuelos($allVuelos) {
         
-        $html = '<select>';
+        $html = '<select name="vuelo">';
         $html .= '<option disabled selected value="">Seleccione un código</option>';
         foreach($allVuelos as $vuelo){
             $html .= '<option value="'.$vuelo->identificador.'">'. $vuelo->identificador .' - '. $vuelo->aeropuertoorigen. ' - '. $vuelo->aeropuertodestino.'</option>';
