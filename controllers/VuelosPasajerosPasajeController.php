@@ -25,11 +25,18 @@ class VuelosPasajerosPasajeController {
     public function showInsertarPasajeForm(){
         
         $checkFill = false;
+        $checkAllreadyCreated = false;
+        $checkCorrect = false;
         
         if(isset($_GET['fill']) ){
             $checkFill = true;
         }
-        
+        if(isset($_GET['allreadyCreated']) ){
+            $checkAllreadyCreated = true;
+        }
+        if(isset($_GET['correct']) ){
+            $checkCorrect = true;
+        }
         $allPasajeros = $this->pasajeroService->requestPasajeros();
         $allVuelos = $this->vuelosService->requestVuelos();
         
@@ -38,7 +45,7 @@ class VuelosPasajerosPasajeController {
         $selectOfPasajeros = $this->pasajeroView->createSelectPasajeros($allPasajeros);
         $selectOfVuelos = $this->vuelosView->showSelectVuelos($allVuelos);
         
-        $this->view->showFormInsertVuelo($selectOfPasajeros, $selectOfVuelos, $checkFill);
+        $this->view->showFormInsertVuelo($selectOfPasajeros, $selectOfVuelos, $checkFill, $checkAllreadyCreated, $checkCorrect);
     }
     
     public function submitPasaje(){
@@ -47,6 +54,7 @@ class VuelosPasajerosPasajeController {
             
             if(empty($_POST['pasajero']) || empty($_POST['vuelo']) || empty($_POST['asiento']) || empty($_POST['clase']) || empty($_POST['pvp']) ){
                 header('Location: '.$_SERVER['PHP_SELF'] . '?controller=VuelosPasajerosPasaje&action=showInsertarPasajeForm&fill');
+                exit;
             }
             
             $data = array(
@@ -71,7 +79,14 @@ class VuelosPasajerosPasajeController {
             // Cierra la conexión cURL
             curl_close($curl);
             
-            echo $response;
+            if(str_contains($response, 'Ese pasaje ya ') ){
+                header('Location: '.$_SERVER['PHP_SELF'] . '?controller=VuelosPasajerosPasaje&action=showInsertarPasajeForm&allreadyCreated');
+                exit();
+            }
+            header('Location: '.$_SERVER['PHP_SELF'] . '?controller=VuelosPasajerosPasaje&action=showInsertarPasajeForm&correct');
+            exit;
+            
+            
         }
         
     }

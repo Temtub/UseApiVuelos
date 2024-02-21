@@ -2,11 +2,17 @@
 
 class VuelosPasajerosPasajeView{
     // Muestra la lista de tareas
-    public function showFormInsertVuelo($selectAllPasajeros, $selectAllVuelos, $checkFill) {
+    public function showFormInsertVuelo($selectAllPasajeros, $selectAllVuelos, $checkFill, $checkAllreadyCreated, $checkCorrect) {
         echo '<h1>Inserta un pasaje</h1>';
         
         if($checkFill){
             echo 'Rellene todos los datos';
+        }
+        if($checkAllreadyCreated){
+            echo 'Ese pasaje ya está creado.';
+        }
+        if($checkCorrect){
+            echo 'Pasaje creado correctamente.';
         }
         
         echo '<form method="POST" action="'. $_SERVER['PHP_SELF'] . '?controller=VuelosPasajerosPasaje&action=submitPasaje" class="d-flex flex-column align-items-center justify-content-center">

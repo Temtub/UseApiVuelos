@@ -34,8 +34,8 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" 
                                    href="<?php
-                                    echo $_SERVER['PHP_SELF'] . '?controller=Vuelos&action=viewListaVuelos';
-                                   ?>" >Ver lista vuelo</a>
+                                    echo $_SERVER['PHP_SELF'] . '?controller=VuelosPasaje&action=viewSelectIntro';
+                                   ?>" >Ver un vuelo</a>
                             </li>
                             
                             <li class="nav-item">
