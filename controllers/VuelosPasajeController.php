@@ -53,11 +53,16 @@ class VuelosPasajeController {
             }
             
             if(isset($_POST['pasaje']) ){
+                //Show the intro of page
                 $this->verPasajeData();
+                //Get the vuelo id
                 $vueloId = filter_input(INPUT_POST, "vuelo");
-                print_r($vueloId);
-                $vueloData = $this->serviceVuelos->requestOneVuelo(123);
-//                print_r($vueloData);
+                //print_r($vueloId);
+                
+                //Get the vuelo data from that id
+                $vueloData = $this->serviceVuelos->requestOneVuelo($vueloId);
+                //print_r($vueloData);
+                //Show the data of the vuelo
                 $this->viewVuelosPasaje->showVueloData($vueloData->identificador, $vueloData->aeropuertoorigen, $vueloData->aeropuertodestino, $vueloData->tipovuelo, $vueloData->fechavuelo, $vueloData->descuento);
                 exit();
             }
