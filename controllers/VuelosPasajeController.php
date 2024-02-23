@@ -6,12 +6,13 @@ class VuelosPasajeController {
     private $viewVuelosPasaje;
     private $viewVuelos;
     private $serviceVuelos;
-
+    private $servicePasajes;
     public function __construct() {
         $this->viewVuelosPasaje = new VuelosPasajeView();
         $this->viewVuelos = new VuelosView();
 
         $this->serviceVuelos= new VuelosService();
+        $this->servicePasajes = new PasajeService();
     }
 
     /**
@@ -45,23 +46,39 @@ class VuelosPasajeController {
                 $this->viewVuelosPasaje->showError('Escoja un código');
             }
             
-             if(isset($_POST['hotel']) ){
+             if(isset($_POST['verPasaje']) && isset($_POST['vuelo'])){
                 $this->verHotelData();
-                                
+                //Get the vuelo id
+                $vueloId = filter_input(INPUT_POST, "vuelo");                
+                
+                $pasajes = $this->servicePasajes->requestePasajesOfVuelo($vueloId);
+                
+                $this->viewVuelosPasaje->showStartTable();
+                
+                if($pasajes === "false" || !$pasajes){
+                    $this->viewVuelosPasaje->showError("No se han encontrado pasajes");
+                    exit();
+                }
+                    
+                $this->viewVuelosPasaje->showPasajes($pasajes->idpasaje, $pasajes->pasajerocod, $pasajes->numasiento, $pasajes->clase, $pasajes->pvp);
+                
+                $this->viewVuelosPasaje->showEndTable();
 
                 exit();
             }
             
-            if(isset($_POST['pasaje']) ){
-                //Show the intro of page
-                $this->verPasajeData();
+            //Show the intro of page
+            $this->verPasajeData();
+            
+            if( isset($_POST['verVuelo']) && isset($_POST['vuelo']) ){
+                
                 //Get the vuelo id
                 $vueloId = filter_input(INPUT_POST, "vuelo");
-                //print_r($vueloId);
+                
                 
                 //Get the vuelo data from that id
                 $vueloData = $this->serviceVuelos->requestOneVuelo($vueloId);
-                //print_r($vueloData);
+                
                 //Show the data of the vuelo
                 $this->viewVuelosPasaje->showVueloData($vueloData->identificador, $vueloData->aeropuertoorigen, $vueloData->aeropuertodestino, $vueloData->tipovuelo, $vueloData->fechavuelo, $vueloData->descuento);
                 exit();

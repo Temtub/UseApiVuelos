@@ -3,9 +3,9 @@
     class PasajeService{
 
         //GET
-        function requestVuelos() {
+        function requestePasajesOfVuelo($id) {
             //Declare the url of the service
-            $serviceUrl = "http://localhost/restfulVuelos/Vuelos.php";
+            $serviceUrl = "http://localhost/restfulVuelos/Pasajes.php?id=".$id;
             //Start the conexion
             $conexion = curl_init();
 
@@ -26,7 +26,7 @@
             if ($res) {
                // echo "<br>Salida request_curl<br>";
                 //print_r($res);
-                return $res;
+                return json_decode($res);
             }
             curl_close($conexion);
         }
