@@ -25,10 +25,12 @@ class VuelosPasajeView{
         </div>';
     }
     
-    public function showPasajes($idpasaje, $pasajeroCod, $numAsiento, $clase, $pvp) {
+    public function showPasajes($idpasaje, $pasajeroCod, $numAsiento, $clase, $pvp, $nombre, $pais) {
         echo '<tr>
                 <td scope="col">'.$idpasaje.'</td>
                 <td scope="col">'.$pasajeroCod.'</td>
+                <td scope="col">'.$nombre.'</td>   
+                <td scope="col">'.$pais.'</td>
                 <td scope="col">'.$numAsiento.'</td>
                 <td scope="col">'.$clase.'</td>
                 <td scope="col">'.$pvp.'€</td>
@@ -41,7 +43,9 @@ class VuelosPasajeView{
             <tr>
                 <th scope="col">Identificador del pasaje</th>
                 <th scope="col">Codigo de pasajero</th>
-                <th scope="col">Número de asiento</th>
+                <th scope="col">Nombre pasajero</th>
+                <th scope="col">Pais del pasajero</th>
+                <th scope="col">Numero de asiento</th>
                 <th scope="col">Clase</th>
                 <th scope="col">Precio</th>
             </tr>

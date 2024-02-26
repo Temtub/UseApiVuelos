@@ -59,8 +59,11 @@ class VuelosPasajeController {
                     $this->viewVuelosPasaje->showError("No se han encontrado pasajes");
                     exit();
                 }
+                
+                foreach ($pasajes->resultado as $pasaje){
+                    $this->viewVuelosPasaje->showPasajes($pasaje->idpasaje, $pasaje->pasajerocod, $pasaje->numasiento, $pasaje->clase, $pasaje->pvp, $pasaje->nombre, $pasaje->pais);
+                }
                     
-                $this->viewVuelosPasaje->showPasajes($pasajes->idpasaje, $pasajes->pasajerocod, $pasajes->numasiento, $pasajes->clase, $pasajes->pvp);
                 
                 $this->viewVuelosPasaje->showEndTable();
 
