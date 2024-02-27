@@ -32,7 +32,7 @@ class VuelosPasajeController {
         
     }
     
-    public function verHotelData() {
+    public function verVueloData() {
         $this->viewSelectIntro();
         
         
@@ -46,8 +46,8 @@ class VuelosPasajeController {
                 $this->viewVuelosPasaje->showError('Escoja un código');
             }
             
-             if(isset($_POST['verPasaje']) && isset($_POST['vuelo'])){
-                $this->verHotelData();
+            if(isset($_POST['verPasaje']) && isset($_POST['vuelo'])){
+                $this->verVueloData();
                 //Get the vuelo id
                 $vueloId = filter_input(INPUT_POST, "vuelo");                
                 

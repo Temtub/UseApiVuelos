@@ -50,7 +50,7 @@
             curl_setopt($conexion, CURLOPT_RETURNTRANSFER, true);
             
             $res = curl_exec($conexion);
-            print_r($res);
+            // print_r($res);
             if ($res) {
                // echo "<br>Salida request_curl<br>";
                 //print_r($res);

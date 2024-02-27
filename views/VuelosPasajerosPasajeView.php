@@ -6,13 +6,14 @@ class VuelosPasajerosPasajeView{
         echo '<h1>Inserta un pasaje</h1>';
         
         if($checkFill){
-            echo 'Rellene todos los datos';
+            $this->showMessage( 'Rellene todos los datos');
         }
         if($checkAllreadyCreated){
-            echo 'Ese pasaje ya está creado.';
+            $this->showMessage( 'Ese pasaje ya está creado.');
         }
         if($checkCorrect){
-            echo 'Pasaje creado correctamente.';
+            $this->showMessage( 'Pasaje creado correctamente.');
+
         }
         
         echo '<form method="POST" action="'. $_SERVER['PHP_SELF'] . '?controller=VuelosPasajerosPasaje&action=submitPasaje" class="d-flex flex-column align-items-center justify-content-center">
@@ -42,9 +43,12 @@ class VuelosPasajerosPasajeView{
             <label>PVP:</label>
             <input type="number" name="pvp">
             
-            <input type="submit">
+            <input class="btn btn-primary buttonInsertPasaje" type="submit">
         </form>';
         
     }
     
+    public function showMessage($msg){
+        echo '<p class="msg">'.$msg.'</p>';
+    }
 }

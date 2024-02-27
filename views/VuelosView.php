@@ -3,8 +3,8 @@
 class VuelosView{
     // Muestra la lista de tareas
     public function showAllVuelos($allVuelos) {
-                //print_r($allVuelos);
-        echo '<table class="table table-striped custom-table">
+       
+        echo '<h1>Los vuelos son:</h1><table class="table table-striped custom-table">
         <thead>
             <tr>
                 <th scope="col">Identificador</th>
@@ -40,7 +40,7 @@ class VuelosView{
 
     public function showSelectVuelos($allVuelos) {
         
-        $html = '<select name="vuelo">';
+        $html = '<select name="vuelo" class="selectVuelos">';
         $html .= '<option disabled selected value="">Seleccione un código</option>';
         foreach($allVuelos as $vuelo){
             $html .= '<option value="'.$vuelo->identificador.'">'. $vuelo->identificador .' - '. $vuelo->aeropuertoorigen. ' - '. $vuelo->aeropuertodestino.'</option>';

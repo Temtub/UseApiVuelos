@@ -4,14 +4,15 @@ class VuelosPasajeView{
     
     public function showIntro($selectVuelos, $dataChecker) {
         if($dataChecker){
-            echo 'Escoja un vuelo.';
+            echo 'Escoja un vuelo       .';
             
         }
-        echo '<form method="POST" action="'. $_SERVER['PHP_SELF'] . '?controller=VuelosPasaje&action=formManager">
+        echo '<form class="formVuelosPasaje" method="POST" action="'. $_SERVER['PHP_SELF'] . '?controller=VuelosPasaje&action=formManager">
             '.$selectVuelos.' 
+            <div class="form__buttons">
                 <input type="submit" class="btn btn-primary" name="verVuelo" value="Ver vuelo"/>
                 <input type="submit" class="btn btn-primary" name="verPasaje" value="Ver pasaje"/>
-
+            </div>
         </form>';
     }
     public function showVueloData($id, $origen, $destino, $tipo, $fecha, $descuento) {
@@ -57,6 +58,8 @@ class VuelosPasajeView{
       echo '</tbody></table>';  
     }
     public function showError($msg) {
-        echo $msg;
+        echo '<p class="msg">'.$msg.'</p>';
     }
+    
+
 }
